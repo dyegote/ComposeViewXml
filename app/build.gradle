@@ -37,6 +37,9 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion '1.4.2'
     }
+    viewBinding {
+        enabled = true
+    }
 }
 
 dependencies {
