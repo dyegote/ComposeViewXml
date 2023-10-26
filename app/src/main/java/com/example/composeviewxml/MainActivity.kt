@@ -1,5 +1,6 @@
 package com.example.composeviewxml
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.compose.material3.MaterialTheme
@@ -20,9 +21,16 @@ class MainActivity : AppCompatActivity() {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
                 MaterialTheme {
-                    SampleButton()
+                    SampleButton(onCLick = { openActivity() })
                 }
             }
         }
+
+    }
+
+    private fun openActivity() {
+        val intent = Intent(this, SecondActivity::class.java)
+        startActivity(intent)
     }
 }
+
