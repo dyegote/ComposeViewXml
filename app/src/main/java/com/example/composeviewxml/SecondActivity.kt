@@ -6,6 +6,7 @@ import android.widget.Button
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.platform.ComposeView
 import com.example.composeviewxml.compose.SampleButton
 import com.example.composeviewxml.databinding.ActivitySecondBinding
@@ -13,6 +14,7 @@ import com.example.composeviewxml.databinding.ActivitySecondBinding
 class SecondActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySecondBinding
+    var text = mutableStateOf("")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,11 +22,16 @@ class SecondActivity : AppCompatActivity() {
         setContentView(binding.root)
         addView(createViewButton())
         addView(createComposeButton())
+        text.value = "COMPOSE BUTTON"
     }
 
     private fun createViewButton(): Button {
         val button = Button(this)
         button.text = "BUTTON VIEW"
+        button.setOnClickListener {
+            //Cambio el texto del compose button
+            text.value = "Nuevo Texto"
+        }
         return  button
     }
 
@@ -34,7 +41,10 @@ class SecondActivity : AppCompatActivity() {
         composeView.apply {
             setContent {
                 MaterialTheme {
-                    SampleButton(onCLick = { })
+                    SampleButton(
+                        text = text.value,
+                        onCLick = { }
+                    )
                 }
             }
         }

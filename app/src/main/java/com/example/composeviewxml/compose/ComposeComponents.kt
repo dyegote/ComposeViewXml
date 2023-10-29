@@ -9,14 +9,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun SampleButton(onCLick: () -> Unit) {
+fun SampleButton(text: String, onCLick: () -> Unit) {
 
     Button(
         onClick = { onCLick() },
         modifier = Modifier.fillMaxWidth(),
         enabled = true
     ) {
-        Text(text = "COMPOSE BUTTON")
+        Text(text = text)
     }
 
 }
@@ -25,6 +25,6 @@ fun SampleButton(onCLick: () -> Unit) {
 @Composable
 fun SampleButtonPreview() {
     ComposeSampleTheme {
-        SampleButton(onCLick = {})
+        SampleButton("SAMLE COMPOSE", onCLick = {})
     }
 }

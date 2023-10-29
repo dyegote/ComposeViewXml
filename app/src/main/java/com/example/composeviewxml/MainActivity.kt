@@ -17,11 +17,12 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+
         binding.miComposeView.apply {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
                 MaterialTheme {
-                    SampleButton(onCLick = { openActivity() })
+                    SampleButton("Ir a Activity 2", onCLick = { openActivity() })
                 }
             }
         }
