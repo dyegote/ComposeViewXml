@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.platform.ComposeView
+import com.example.composeviewxml.compose.ButtonComposeView
 import com.example.composeviewxml.compose.SampleButton
 import com.example.composeviewxml.databinding.ActivitySecondBinding
 
@@ -22,6 +23,7 @@ class SecondActivity : AppCompatActivity() {
         setContentView(binding.root)
         addView(createViewButton())
         addView(createComposeButton())
+        addView(createComponentViewButton())
         text.value = "COMPOSE BUTTON"
     }
 
@@ -49,6 +51,10 @@ class SecondActivity : AppCompatActivity() {
             }
         }
         return  composeView
+    }
+
+    private fun createComponentViewButton(): ButtonComposeView {
+        return ButtonComposeView(this)
     }
 
     private fun addView(view: View) {
