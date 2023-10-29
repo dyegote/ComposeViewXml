@@ -15,7 +15,9 @@ import com.example.composeviewxml.databinding.ActivitySecondBinding
 class SecondActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySecondBinding
+    private lateinit var composeButton: ButtonComposeView
     var text = mutableStateOf("")
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +25,8 @@ class SecondActivity : AppCompatActivity() {
         setContentView(binding.root)
         addView(createViewButton())
         addView(createComposeButton())
-        addView(createComponentViewButton())
+        composeButton = createComponentViewButton()
+        addView(composeButton)
         text.value = "COMPOSE BUTTON"
     }
 
@@ -33,6 +36,7 @@ class SecondActivity : AppCompatActivity() {
         button.setOnClickListener {
             //Cambio el texto del compose button
             text.value = "Nuevo Texto"
+            composeButton.text.value = "Nuevo Texto compose"
         }
         return  button
     }
@@ -54,7 +58,9 @@ class SecondActivity : AppCompatActivity() {
     }
 
     private fun createComponentViewButton(): ButtonComposeView {
-        return ButtonComposeView(this)
+        val button = ButtonComposeView(this)
+        button.text.value = "COMPOSE VIEW BUTTON"
+        return button
     }
 
     private fun addView(view: View) {
